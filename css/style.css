@@ -228,7 +228,7 @@ article a:hover {
   text-decoration: underline;
 }
 article p {
-  margin: 24px 0;
+  margin: 25px 0;
   position: relative;
 }
 article p:after {
@@ -296,7 +296,7 @@ article h4,
 article h5,
 article h6 {
   color: var(--color-text-1);
-  margin: 24px 0;
+  margin: 25px 0;
 }
 article h4,
 article h5,
@@ -322,11 +322,11 @@ article h2 {
 article h2:before {
   content: '';
   width: 100%;
-  padding: 0px 24px;
+  padding: 0px 25px;
   border-bottom: 1px solid #eee;
   position: absolute;
   bottom: -1px;
-  left: -24px;
+  left: -25px;
   box-sizing: unset;
 }
 article h2:after {
@@ -357,7 +357,7 @@ article h6 {
 }
 article blockquote {
   color: #666;
-  margin: 24px 0;
+  margin: 25px 0;
   padding: 0.1em 2.2em;
   background-color: #f8f8f8;
   line-height: 28px;
@@ -386,7 +386,7 @@ article hr {
   display: block;
   border: 0;
   border-top: 1px dashed #ccc;
-  margin: 24px 0;
+  margin: 25px 0;
   padding: 0;
 }
 article sub,
@@ -579,7 +579,7 @@ font.douyin {
   -webkit-box-shadow: 0 0 0 1px #eee !important;
   box-shadow: 0 0 0 1px #eee !important;
   border-radius: 10px !important;
-  margin: 24px 0 !important;
+  margin: 25px 0 !important;
   height: 90px;
 }
 .aplayer .aplayer-info {
@@ -931,7 +931,7 @@ article.nexmoe-py ul li img {
   margin-bottom: 0;
 }
 .nexmoe-posts .nexmoe-post:last-child {
-  margin-bottom: 24px;
+  margin-bottom: 25px;
 }
 .nexmoe-post .nexmoe-post-cover {
   width: 100%;
@@ -960,7 +960,7 @@ article.nexmoe-py ul li img {
   box-sizing: border-box;
   text-transform: none;
   margin: 0;
-  padding: 24px;
+  padding: 25px;
   z-index: 1;
   text-shadow: 0 1px 3px rgba(0,0,0,0.251);
 }
@@ -1051,8 +1051,8 @@ article.nexmoe-py ul li img {
 }
 .nexmoe-post-footer {
   background-color: #f5f6f5;
-  padding: 24px;
-  margin: -24px;
+  padding: 25px;
+  margin: -25px;
   margin-top: 0;
 }
 .nexmoe-widget-wrap .nexmoe-widget .hitokoto-box {
@@ -1302,7 +1302,7 @@ body {
   background-color: var(--color-card);
   float: left;
   width: 100%;
-  padding: 24px;
+  padding: 25px;
   position: absolute;
   min-height: 100vh;
 }
@@ -1483,7 +1483,7 @@ body.mdui-drawer-body-left {
   box-shadow: 0 1em 3em 0.5em rgba(0,0,0,0.25);
 }
 .nexmoe-post-right {
-  margin: 0px -24px;
+  margin: 0px -25px;
   text-align: right;
   width: calc(100vw - 350px);
   max-width: calc(100% + 50px);
@@ -1529,7 +1529,7 @@ body.mdui-drawer-body-left {
 }
 @media screen and (max-width: 1024px) {
   .nexmoe-post-right {
-    margin: 24px 0px;
+    margin: 25px 0px;
     text-align: left;
   }
   .nexmoe-post-right .nexmoe-fixed {

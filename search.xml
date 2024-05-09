@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>对nexmoe主题做出的改动</title>
+      <link href="/2024/05/09/%E5%AF%B9nexmoe%E4%B8%BB%E9%A2%98%E5%81%9A%E5%87%BA%E7%9A%84%E6%94%B9%E5%8A%A8/"/>
+      <url>/2024/05/09/%E5%AF%B9nexmoe%E4%B8%BB%E9%A2%98%E5%81%9A%E5%87%BA%E7%9A%84%E6%94%B9%E5%8A%A8/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="将网页搜索引擎改为本地搜索"><a href="#将网页搜索引擎改为本地搜索" class="headerlink" title="将网页搜索引擎改为本地搜索"></a>将网页搜索引擎改为本地搜索</h1><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>后文中提到的主题文件夹的位置会因为安装该主题的方式不同出现差异，不同的安装方式下主题文件夹位置分别如下：</p><ul><li>通过<code>npm</code>命令安装：<code>node_modules/hexo-theme-nexmoe</code></li><li>通过解压主题安装：<code>themes/nexmoe-x.x.x</code></li></ul><h2 id="更改搜索类型"><a href="#更改搜索类型" class="headerlink" title="更改搜索类型"></a>更改搜索类型</h2><p>将主题配置文件中<code>search</code>项下的<code>type</code>设置为<code>local</code>，下面的<code>url</code>和<code>id</code>可以删除，改后如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">search: </span><br><span class="line">    type: local</span><br></pre></td></tr></table></figure><h2 id="取消搜索区分大小写"><a href="#取消搜索区分大小写" class="headerlink" title="取消搜索区分大小写"></a>取消搜索区分大小写</h2><p>在搜索时将搜索关键词和文章标题、内容都转换为统一的大小写形式（比如全部转换为小写），然后进行匹配。这样无论用户输入的是大写、小写还是混合大小写，都能够正确匹配到相应的结果。</p><p>更改方式如下：</p><ul><li><p>找到主题文件夹中的<code>source/js/search.js</code></p></li><li><p>在<code>keyword.forEach(word =&gt; &#123;</code>下面添加<code>const lowerCaseWord = word.toLowerCase();</code></p></li><li><p>将<code>const reg = new RegExp(lowerCaseWord, &#39;g&#39;);</code>中的<code>&#39;g&#39;</code>改为<code>&#39;gi&#39;</code></p></li><li><p>将<code>if (post.title.search(reg) !== -1) &#123;</code>改为<code>if (post.title.toLowerCase().search(reg) !== -1) &#123;</code></p></li><li><p>将<code>const textpos = post.text.search(reg);</code>改为<code>const textpos = post.text.toLowerCase().search(reg);</code></p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 主题优化 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2024/05/08/hello-world/"/>
+      <url>/2024/05/08/hello-world/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> test </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> test </tag>
+            
+            <tag> hello </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>

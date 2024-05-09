@@ -24,15 +24,16 @@ function loadData(arg) {
 
 function searchkey(keyword) {
     keyword.forEach(word => {
+        const lowerCaseWord = word.toLowerCase(); // 将关键词转换为小写
         searchData.forEach(post => {
             const rend = {};
-            const reg = new RegExp(word, 'g');
+            const reg = new RegExp(lowerCaseWord, 'gi'); // 不区分大小写的正则表达式匹配
             let flag = false;
-            if (post.title.search(reg) !== -1) {
+            if (post.title.toLowerCase().search(reg) !== -1) { // 将标题转换为小写后进行匹配
                 rend.title = post.title.replace(reg, `<span class="keyword">${word}</span>`);
                 flag = true;
             }
-            const textpos = post.text.search(reg);
+            const textpos = post.text.toLowerCase().search(reg); // 将内容转换为小写后进行匹配
             if (textpos !== -1) {
                 rend.text = `…${post.text.substring(textpos, textpos + 18)}…`;
                 rend.text = rend.text.replace(reg, `<span class="keyword">${word}</span>`);
