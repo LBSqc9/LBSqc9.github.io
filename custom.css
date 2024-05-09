@@ -17,3 +17,18 @@
     --color7-bg: rgba(144, 144, 255, 0.15);
     --color-shadow: rgba(161, 177, 204, 0.4);
 }
+body {
+    overflow-x: hidden;
+}
+
+#nexmoe-content .nexmoe-post-footer {
+    background-color: transparent;
+}
+
+iframe {
+    width: 100% !important;
+}
+
+article ul li {
+    line-height: 1.5rem;
+}
