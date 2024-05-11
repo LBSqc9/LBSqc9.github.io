@@ -20,15 +20,15 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1715240074034">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1715419342449">
 
-<link rel="stylesheet" href="/css/style.css?v=1715240074034">
+<link rel="stylesheet" href="/css/style.css?v=1715419342450">
 
 
 
 
     
-        <link rel="stylesheet" href="/custom.css?v=1715240074034">
+        <link rel="stylesheet" href="/custom.css?v=1715419342450">
     
 
 
@@ -38,7 +38,7 @@
 <script src="/lib/lax.min.js" async></script>
 
 
-<script async src="/js/app.js?v=1715240074034"></script>
+<script async src="/js/app.js?v=1715419342450"></script>
 
  
 
@@ -62,8 +62,8 @@
     </div>
     <div class="nexmoe-count">
         <div><span>文章</span>2</div>
-        <div><span>标签</span>3</div>
-        <div><span>分类</span>2</div>
+        <div><span>标签</span>1</div>
+        <div><span>分类</span>1</div>
     </div>
     <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
         
@@ -109,22 +109,23 @@
         <div class="nexmoe-widget-wrap">
     <div class="nexmoe-widget nexmoe-search">
         
-            <form id="search_form">
-                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="搜索" style="
+                <form id="search_form">
+                    <label><input class="st-default-search-input" id="search_value" name="q" type="search"
+                            placeholder="搜索" style="
                     font-size: 15px !important;
                     height: 56px !important;
                     background-image: none;
                 "></label>
-            </form>
-         
+                </form>
+                
     </div>
 </div>
 
 
-	<script async src="/js/search.js?v=1715240074037"></script>
+    <script async src="/js/search.js?v=1715419342453"></script>
+        
 
-
-
+            
     
         
         <div class="nexmoe-widget-wrap">
@@ -194,13 +195,6 @@
         </li>
 
         
-
-        <li class="category-list-item">
-          <a class="category-list-link" href="/categories/test/">test</a>
-          <span class="category-list-count">1</span>
-        </li>
-
-        
       </ul>
 
     </div>
@@ -212,12 +206,12 @@
         
   <div class="nexmoe-widget-wrap">
     <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
-      <a href="/tags/hello/" style="font-size: 10px;">hello</a> <a href="/tags/test/" style="font-size: 10px;">test</a> <a href="/tags/%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" style="font-size: 10px;">主题优化</a>
+      <a href="/tags/%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" style="font-size: 10px;">主题优化</a>
     </div>
     
       <script>
         var maxTagcloud = parseInt(17);
-        var tags_length = parseInt(3);
+        var tags_length = parseInt(1);
         var tags_arr = [];
         for(var i = 0; i < tags_length; i++){
           tags_arr.push(i);
@@ -249,6 +243,22 @@
     
         
         
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget">
+        <!-- require APlayer -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+        <!-- require MetingJS-->
+        <script src="https://cdn.jsdelivr.net/npm/meting@1.2/dist/Meting.min.js"></script>
+        <!--网易云-->
+        <div class="aplayer" data-id="562221378" data-server="netease" data-type="playlist" data-fixed="false"
+            data-mini="false" data-autoplay="false" data-list-folded="false" data-mutex="true" data-order="random"
+            data-loop="all" data-volume="0.4" data-theme="#FADFA3" date-preload="auto">
+        </div>
+    </div>
+</div>
+    
+        
    
     <div class="nexmoe-copyright">
         &copy; 2024 LBSqc9
@@ -259,7 +269,7 @@
 </div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><section class="nexmoe-archives">
     
     <div class="tagcloud nexmoe-rainbow">
-        <a class="mdui-ripple -unordered list-link" href="/tags/hello/" rel="tag">hello<span class="mdui-ripple -unordered list-count">1</span></a><a class="mdui-ripple -unordered list-link" href="/tags/test/" rel="tag">test<span class="mdui-ripple -unordered list-count">1</span></a><a class="mdui-ripple -unordered list-link" href="/tags/%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" rel="tag">主题优化<span class="mdui-ripple -unordered list-count">1</span></a>
+        <a class="mdui-ripple -unordered list-link" href="/tags/%E4%B8%BB%E9%A2%98%E4%BC%98%E5%8C%96/" rel="tag">主题优化<span class="mdui-ripple -unordered list-count">1</span></a>
     </div>
 
     <div class="categories nexmoe-rainbow-fill">
@@ -275,19 +285,6 @@
                 <h1>hexo</h1>
             </a>
         
-            
-            
-                
-                 
-                     
-                
-            
-
-            <a class="mdui-ripple" href="/categories/test/">
-                <div class="bg" style="background-image:url(/images/scenery/IMG_20231122_170338.jpg)"></div>
-                <h1>test</h1>
-            </a>
-        
     </div>
     
     <article>
@@ -298,9 +295,9 @@
             <h2>2024</h2>
             <ul>
             
-                <li><span>05-09</span><a href="/2024/05/09/%E5%AF%B9nexmoe%E4%B8%BB%E9%A2%98%E5%81%9A%E5%87%BA%E7%9A%84%E6%94%B9%E5%8A%A8/" >对nexmoe主题做出的改动</a></li>
+                <li><span>05-09</span><a href="/2024/05/09/%E5%AF%B9GPT%E7%9A%84%E7%90%86%E8%A7%A3/" >对GPT的理解</a></li>
             
-                <li><span>05-08</span><a href="/2024/05/08/hello-world/" >Hello World</a></li>
+                <li><span>05-09</span><a href="/2024/05/09/%E5%AF%B9nexmoe%E4%B8%BB%E9%A2%98%E5%81%9A%E5%87%BA%E7%9A%84%E6%94%B9%E5%8A%A8/" >对nexmoe主题做出的改动</a></li>
             
             </ul>
         

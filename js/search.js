@@ -4,7 +4,7 @@ function loadData(arg) {
     if (!searchData) {
         const xhr = new XMLHttpRequest();
         xhr.open('GET', '/content.json', true);
-        xhr.onload = function() {
+        xhr.onload = function () {
             if (this.status >= 200 && this.status < 300) {
                 const res = JSON.parse(this.response || this.responseText);
                 searchData = res instanceof Array ? res : res.posts;
@@ -13,7 +13,7 @@ function loadData(arg) {
                 console.error(statusText);
             }
         };
-        xhr.onerror = function() {
+        xhr.onerror = function () {
             console.error(statusText);
         };
         xhr.send();
@@ -24,16 +24,16 @@ function loadData(arg) {
 
 function searchkey(keyword) {
     keyword.forEach(word => {
-        const lowerCaseWord = word.toLowerCase(); // 将关键词转换为小写
+        const lowerCaseWord = word.toLowerCase();
         searchData.forEach(post => {
             const rend = {};
-            const reg = new RegExp(lowerCaseWord, 'gi'); // 不区分大小写的正则表达式匹配
+            const reg = new RegExp(word, 'gi');
             let flag = false;
-            if (post.title.toLowerCase().search(reg) !== -1) { // 将标题转换为小写后进行匹配
+            if (post.title.toLowerCase().search(reg) !== -1) {
                 rend.title = post.title.replace(reg, `<span class="keyword">${word}</span>`);
                 flag = true;
             }
-            const textpos = post.text.toLowerCase().search(reg); // 将内容转换为小写后进行匹配
+            const textpos = post.text.toLowerCase().search(reg);
             if (textpos !== -1) {
                 rend.text = `…${post.text.substring(textpos, textpos + 18)}…`;
                 rend.text = rend.text.replace(reg, `<span class="keyword">${word}</span>`);
@@ -53,7 +53,7 @@ function render(data) {
     const ele = document.createElement('div');
     ele.className = 'search-result';
     ele.innerHTML = `<a href=${data.href}><h3>${data.title}</h3>
-    <span class="content">${data.text}<br>　</span></a>`;
+    </a>`;
     document.getElementsByClassName('search-body')[0].appendChild(ele);
 }
 
