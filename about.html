@@ -45,7 +45,7 @@
               
                 <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
                 
-                  <link rel="stylesheet" href="/css/style.css?v=1715438263291">
+                  <link rel="stylesheet" href="/css/style.css?v=1715441384634">
                     <!-- require APlayer -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
 <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
@@ -58,46 +58,6 @@
     data-volume="0.4" data-list-folded="false" data-mutex="true" data-loop="all" data-theme="#FADFA3"
     date-preload="auto">
 </div>
-<script>
-    ap = null
-    Object.defineProperty(document.querySelector('meting-js'), "aplayer", {
-        set: function (aplayer) {
-            ap = aplayer
-            ready();
-        }
-    });
-
-    isRecover = false;
-    function ready() {
-        ap.on('canplay', function () {
-            if (!isRecover) {
-                if (localStorage.getItem("musicIndex") != null) {
-                    musicIndex = localStorage.getItem("musicIndex");
-                    musicTime = localStorage.getItem("musicTime");
-                    if (ap.list.index != musicIndex) {
-                        ap.list.switch(musicIndex);
-                    } else {
-                        ap.seek(musicTime);
-                        ap.play();
-                        localStorage.clear();
-                        isRecover = true;
-                    }
-                } else {
-                    isRecover = true;
-                }
-            }
-        });
-    }
-
-    window.onbeforeunload = function (event) {
-        if (!ap.audio.paused) {
-            musicIndex = ap.list.index;
-            musicTime = ap.audio.currentTime;
-            localStorage.setItem("musicIndex", musicIndex);
-            localStorage.setItem("musicTime", musicTime);
-        }
-    };
-</script>
     <meta name="generator" content="Hexo 7.2.0"></head>
 
     <body class="mdui-drawer-body-left">
@@ -394,13 +354,6 @@
 
               <div class="nexmoe-post-right">
                 
-                  <div class="nexmoe-fixed">
-                    <div class="nexmoe-tool">
-                      <a href="#" aria-label="回到顶部" title="top"><button class="mdui-fab mdui-ripple"><i
-                            class="nexmoefont icon-caret-top"></i></button></a>
-                    </div>
-                  </div>
-                  
               </div>
           </div>
         </div>
@@ -1068,7 +1021,7 @@
 
 	<script src="https://cdn.jsdelivr.net/gh/xtaodada/xtaodada.github.io@0.0.2/copy.js"></script>
 	
-		<script src="/js/app.js?v=1715438263293"></script>
+		<script src="/js/app.js?v=1715441384637"></script>
 
 			<script src="https://lib.baomitu.com/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
 			<script>
@@ -1106,3 +1059,7 @@
 <!-- hexo injector body_end end --></body>
 
 </html>
+
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script>
+    <script type="text/javascript" src="/js/fireworks.js"></script>
