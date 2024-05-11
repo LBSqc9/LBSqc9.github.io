@@ -1373,6 +1373,11 @@ photos img {
 #nexmoe-pendant .nexmoe-pd .qweather .qweather-logo {
   background-image: url("");
 }
+.aplayer {
+  position: fixed;
+  top: 20px;
+  height: auto;
+}
 article a {
   color: #24adf3;
 }
