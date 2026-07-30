@@ -1,0 +1,9 @@
+.icon-books-mountains {
+  background-color: currentColor;
+  -webkit-mask: url("/images/icons/books-mountains.svg") center / 24px 24px no-repeat;
+  mask: url("/images/icons/books-mountains.svg") center / 24px 24px no-repeat;
+}
+
+.icon-books-mountains::before {
+  content: "";
+}
