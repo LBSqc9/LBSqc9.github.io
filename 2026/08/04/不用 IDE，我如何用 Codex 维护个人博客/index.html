@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="zh"><head>
+<title>不用 IDE，我如何用 Codex 维护个人博客 - 未完集</title>
+<meta charset="UTF-8">
+<meta name="keywords" content="技术,阅读,生活,个人博客">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+<link rel="shortcut icon" href="/images/head/favicon-unfinished.png" type="image/png" />
+<meta name="description" content="从无源码重建 Hexo，到预览、改版、整理文章和发布，我如何只通过对话与 Codex 协作维护这个博客。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不用 IDE，我如何用 Codex 维护个人博客">
+<meta property="og:url" content="https://lbsqc9.github.io/2026/08/04/%E4%B8%8D%E7%94%A8%20IDE%EF%BC%8C%E6%88%91%E5%A6%82%E4%BD%95%E7%94%A8%20Codex%20%E7%BB%B4%E6%8A%A4%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/index.html">
+<meta property="og:site_name" content="未完集">
+<meta property="og:description" content="从无源码重建 Hexo，到预览、改版、整理文章和发布，我如何只通过对话与 Codex 协作维护这个博客。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-08-04T05:36:38.000Z">
+<meta property="article:modified_time" content="2026-08-04T05:36:38.000Z">
+<meta property="article:author" content="LBSqc9">
+<meta property="article:tag" content="Codex">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="GitHub Pages">
+<meta property="article:tag" content="AI 协作">
+<meta property="article:tag" content="博客维护">
+<meta name="twitter:card" content="summary">
+
+<link rel="stylesheet" href="/lib/fancybox/fancybox.css">
+<link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
+
+
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1785824555430">
+
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
+
+<link rel="stylesheet" href="/css/style.css?v=1785824555430">
+
+
+
+
+    
+        <link rel="stylesheet" href="/custom.css?v=1785824555430">
+    
+
+
+
+<script src="/lib/mdui_043tiny/mdui.js" async></script>
+<script src="/lib/fancybox/fancybox.umd.js" async></script>
+<script src="/lib/lax.min.js" async></script>
+
+
+<script async src="/js/app.js?v=1785824555430"></script>
+
+ 
+
+<meta name="baidu-site-verification" content="code-J1Qg17G6wT">
+
+
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+<meta name="generator" content="Hexo 7.2.0"></head><body class="nexmoe mdui-drawer-body-left"><div id="nexmoe-background"><div class="nexmoe-bg" style="background-image: url(/images/background/mmexport1711886043602.jpg)"></div><div class="mdui-appbar mdui-shadow-0"><div class="mdui-toolbar"><a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: &#039;#drawer&#039;, swipe: true}" title="menu"><i class="mdui-icon nexmoefont icon-menu"></i></a><div class="mdui-toolbar-spacer"></div><a class="mdui-btn mdui-btn-icon" href="/" title="LBSqc9"><img src="/images/head/head.jpg" alt="LBSqc9"></a></div></div></div><div id="nexmoe-header"><div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="LBSqc9">
+            <img src="/images/head/head.jpg" alt="LBSqc9" alt="LBSqc9">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>2</div>
+        <div><span>标签</span>9</div>
+        <div><span>分类</span>2</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/archives.html" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/books-and-mountains.html" title="书与山">
+            <i class="mdui-list-item-icon nexmoefont icon-books-mountains"></i>
+            <div class="mdui-list-item-content">
+                书与山
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple false" href="/about.html" title="关于这里">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于这里
+            </div>
+        </a>
+        
+    </div>
+    
+    
+        
+        <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        
+            <form id="search_form">
+                <label><input class="st-default-search-input" id="search_value" name="q" type="search" placeholder="搜索" style="
+                    font-size: 15px !important;
+                    height: 56px !important;
+                    background-image: none;
+                "></label>
+            </form>
+         
+    </div>
+</div>
+
+
+	<script async src="/js/search.js?v=1785824555431"></script>
+
+
+
+    
+        
+        <div class="nexmoe-widget-wrap">
+	<div class="nexmoe-widget nexmoe-social">
+		<a
+			class="mdui-ripple"
+			href="mailto:linbosheng.qc9@gmail.com"
+			target="_blank"
+			mdui-tooltip="{content: 'mail'}"
+			style="
+				color: rgb(249, 8, 8);
+				background-color: rgba(249, 8, 8, .1);
+			"
+		>
+			<i
+				class="nexmoefont icon-mail-fill"
+			></i> </a
+		><a
+			class="mdui-ripple"
+			href="https://github.com/LBSqc9/"
+			target="_blank"
+			mdui-tooltip="{content: 'GitHub'}"
+			style="
+				color: rgb(25, 23, 23);
+				background-color: rgba(25, 23, 23, .15);
+			"
+		>
+			<i
+				class="nexmoefont icon-github"
+			></i> </a
+		>
+	</div>
+</div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/技术/">技术</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随笔/">随笔</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud nexmoe-rainbow">
+      <a href="/tags/AI-%E5%8D%8F%E4%BD%9C/" style="font-size: 10px;">AI 协作</a> <a href="/tags/Codex/" style="font-size: 10px;">Codex</a> <a href="/tags/GitHub-Pages/" style="font-size: 10px;">GitHub Pages</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/%E4%B8%93%E6%B3%A8%E5%8A%9B/" style="font-size: 10px;">专注力</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4/" style="font-size: 10px;">博客维护</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%B7%A5%E4%BD%9C/" style="font-size: 10px;">深度工作</a> <a href="/tags/%E8%87%AA%E6%88%91%E6%88%90%E9%95%BF/" style="font-size: 10px;">自我成长</a> <a href="/tags/%E9%98%85%E8%AF%BB/" style="font-size: 10px;">阅读</a>
+    </div>
+    
+      <script>
+        var maxTagcloud = parseInt(17);
+        var tags_length = parseInt(9);
+        var tags_arr = [];
+        for(var i = 0; i < tags_length; i++){
+          tags_arr.push(i);
+        }
+        tags_arr.sort(function (l, r) {
+          return Math.random() > 0.5 ? -1 : 1;
+        });
+        tags_arr = tags_arr.slice(0, maxTagcloud < tags_length ? tags_length - maxTagcloud : 0);
+        for(var tag_i = 0; tag_i < tags_arr.length; tag_i++){
+          document.getElementById("randomtagcloud").children[tags_arr[tag_i]].style.display = 'none';
+        }
+      </script>
+    
+  </div>
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/">2026</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+
+    
+        
+        
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">最新文章</h3>
+    <div class="nexmoe-widget">
+      <ul>
+        
+          <li>
+            <a href="/2026/08/04/%E4%B8%8D%E7%94%A8%20IDE%EF%BC%8C%E6%88%91%E5%A6%82%E4%BD%95%E7%94%A8%20Codex%20%E7%BB%B4%E6%8A%A4%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">不用 IDE，我如何用 Codex 维护个人博客</a>
+          </li>
+        
+          <li>
+            <a href="/2026/07/29/%E9%87%8D%E6%8B%BE%E9%98%85%E8%AF%BB/">重拾阅读</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+   
+    <div class="nexmoe-copyright">
+        &copy; 2026 LBSqc9
+        Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+        & <a href="https://github.com/theme-nexmoe/hexo-theme-nexmoe" target="_blank">Nexmoe</a>
+        
+    </div>
+</div><!-- .nexmoe-drawer --></div><div id="nexmoe-content"><div class="nexmoe-primary"><div class="nexmoe-post">
+  <article>
+    
+        <div class="nexmoe-post-cover absolute" style="padding-top: NaN%;"> 
+            <img src="/images/post/codex-blog-maintenance.png" alt="不用 IDE，我如何用 Codex 维护个人博客" loading="lazy">
+            <h1>不用 IDE，我如何用 Codex 维护个人博客</h1>
+        </div>
+    
+    
+    <div class="nexmoe-post-meta">
+    <div class="nexmoe-rainbow">
+        <a class="nexmoefont icon-calendar-fill">2026年08月04日</a>
+        
+            <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+        
+        
+    <a><i class="nexmoefont icon-areachart"></i>约2.3k字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要8分钟</a>
+
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+    <style>
+section.nexmoe-post article > .home-excerpt {
+  margin: 0;
+  text-indent: 2em;
+}
+div.nexmoe-post article > .home-excerpt {
+  display: none;
+}
+div.nexmoe-post article > p:not(.home-excerpt) {
+  text-indent: 2em;
+}
+article blockquote.codex-note {
+  margin: 1.4em 0 1.8em;
+  padding: 1em 1.25em;
+  border-left: 3px solid #667ebd;
+  background: rgba(102, 126, 189, 0.08);
+  color: var(--color-text-2);
+}
+article blockquote.codex-note p {
+  margin: 0;
+  text-indent: 0;
+}
+@media (max-width: 600px) {
+  section.nexmoe-post article > .nexmoe-post-cover,
+  div.nexmoe-post article > .nexmoe-post-cover {
+    min-height: 148px;
+    padding-top: 38% !important;
+  }
+  section.nexmoe-post article > .nexmoe-post-cover h1,
+  div.nexmoe-post article > .nexmoe-post-cover h1 {
+    padding: 14px 18px;
+    font-size: 1.7rem;
+    line-height: 1.2;
+  }
+}
+</style>
+
+<p class="home-excerpt">从无源码重建 Hexo，到预览、改版、整理文章和发布，我如何只通过对话与 Codex 协作维护这个博客。</p>
+
+<span id="more"></span>
+
+<p>过去提到“维护网站”，我首先想到的是打开 IDE，在目录树中寻找文件，再切换到终端运行命令。即使只是改一个导航名称，也要知道配置在哪里、使用什么语法，以及改完后怎样重新构建。</p>
+<p>这次重新维护博客时，我采用了另一种方式：没有打开 IDE，而是在 Codex 中直接描述自己想要的结果。例如“隐藏下载中心和我的朋友栏目”“去掉关于页面的图片”“把这篇 Word 文档发布成文章”，或者更简单的一句“提交发布”。</p>
+<p>Codex 负责检查项目、修改文件、运行 Hexo 和 Git 命令；我则在浏览器中观察效果，再用自然语言继续提出调整。整个过程更像我在说明意图和做设计判断，而不是亲自操作每个文件。</p>
+<blockquote class="codex-note">
+  <p>不用 IDE，并不等于不需要源码、版本控制和构建流程。变化的只是我与这些工具交互的方式。</p>
+</blockquote>
+
+<h2 id="起点：一个能访问，却无法继续写的博客"><a href="#起点：一个能访问，却无法继续写的博客" class="headerlink" title="起点：一个能访问，却无法继续写的博客"></a>起点：一个能访问，却无法继续写的博客</h2><p>最初，这个网站仍然能够通过 GitHub Pages 打开，但仓库中只有已经生成的 HTML、CSS、JavaScript 和图片。原来的 Markdown、Hexo 配置、主题设置和依赖文件都不在了。</p>
+<p>我可以看到旧网站，却不能方便地写一篇新文章。这也是我第一次明确感受到：线上网页只是构建结果，不是可以继续维护的源码。</p>
+<p>我把 GitHub 仓库交给 Codex，要求它在本地恢复开发环境。它先检查现有文件和页面结构，判断网站使用 Hexo 与 Nexmoe 主题，然后重新建立 <code>package.json</code>、站点配置、主题配置、文章目录和脚手架。原站中的图片等静态资源得以保留，源码工程则重新创建。</p>
+<p>最后，项目形成了两个职责清楚的分支：</p>
+<ul>
+<li><code>source</code> 保存 Markdown、配置、依赖和主题设置；</li>
+<li><code>main</code> 保存 Hexo 生成的网页，用于 GitHub Pages 发布。</li>
+</ul>
+<p>这一步看似只是重建项目，实际上恢复的是“写作—预览—构建—发布”的完整能力。</p>
+<h2 id="我不再寻找文件，而是描述结果"><a href="#我不再寻找文件，而是描述结果" class="headerlink" title="我不再寻找文件，而是描述结果"></a>我不再寻找文件，而是描述结果</h2><p>源码恢复之后，我没有记住每一个配置项的位置。多数时候，我只说明希望网站变成什么样。</p>
+<p>例如，我说“删除音乐播放器”，Codex 会先查找播放器来自主题配置、页面脚本还是第三方组件，再删除相关设置并运行构建。我要隐藏导航栏目时，它会修改主题菜单，而不是简单用 CSS 把内容遮住。我要调整首页图片时，它会同时考虑图片高度、裁剪位置和移动端显示。</p>
+<p>这种方式与直接让 AI 生成一段代码不同。对我来说，真正有用的地方是它能够完成一整段连续工作：</p>
+<ol>
+<li>阅读现有项目；</li>
+<li>找到改动位置；</li>
+<li>修改源码；</li>
+<li>运行构建；</li>
+<li>检查生成结果；</li>
+<li>根据我的反馈继续调整。</li>
+</ol>
+<h2 id="本地预览是我们共同的“画布”"><a href="#本地预览是我们共同的“画布”" class="headerlink" title="本地预览是我们共同的“画布”"></a>本地预览是我们共同的“画布”</h2><p>自然语言并不能一次表达所有视觉细节。很多要求只有看到页面之后才会出现。</p>
+<p>更换首页配图时，我先觉得图片太高；调整高度后，又发现裁剪没有保留书。更换图标时，我先要求透明背景，随后又觉得图形本身不好看。整理书单时，状态标签虽然出现了，却没有与其他书的状态对齐。</p>
+<p>这些都不是一开始能够写进完整需求的问题。我的做法是让 Codex 保持本地 Hexo 服务运行，然后在浏览器中查看 <code>http://127.0.0.1:4000</code>：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\blog.cmd server</span><br></pre></td></tr></table></figure>
+
+<p>我负责指出“哪里看起来不对”，Codex 负责定位对应的 HTML、CSS 或配置。修改后再构建，并通过桌面与手机尺寸检查长书名、卡片高度和状态对齐。</p>
+<p>因此，本地预览不是开发结束后的验收步骤，而是对话的一部分。页面本身就是最准确的反馈。</p>
+<h2 id="Codex-维护的不只是代码"><a href="#Codex-维护的不只是代码" class="headerlink" title="Codex 维护的不只是代码"></a>Codex 维护的不只是代码</h2><p>这个博客的内容并不总是从 Markdown 开始。《重拾阅读》最初是一份 Word 文档，里面有正文、灰色说明文字、署名和日期。我把文档交给 Codex，让它区分正文与非正文，再转换为适合博客的结构。</p>
+<p>之后的调整仍然通过对话完成：署名右对齐、日期右对齐、引用文字使用楷体、保留引号但不能遮挡正文、段落首行缩进两个字。Codex 不只是把文字复制到网页，而是根据文档语义和页面效果反复整理。</p>
+<p>“书与山”页面也是如此。我提供一份书单文档，再陆续告诉它哪些书已读、在读、值得推荐。Codex 重新分类书目、计算状态数量、设计标签，并在每次新增书目后重新检查排版。为了让这条约定以后仍然有效，我们还把它写进项目的 <code>AGENTS.md</code>。</p>
+<p>这让我意识到，维护个人博客不只是写代码，也包括处理文档、组织内容、调整视觉和建立长期规则。Codex 的技能机制正适合承载这类可重复流程。</p>
+<h2 id="“提交发布”仍然是一条明确边界"><a href="#“提交发布”仍然是一条明确边界" class="headerlink" title="“提交发布”仍然是一条明确边界"></a>“提交发布”仍然是一条明确边界</h2><p>最初，我经常把“修改”和“发布”看作同一个动作。后来我发现，如果每次调整都立即推送，出现不满意的效果时就不容易回退。</p>
+<p>现在我们的默认流程是：先只修改本地，等我在浏览器中确认后，再明确说“提交发布”。Codex 随后会检查 Git 差异、只暂存本次相关文件、创建独立提交，先推送 <code>source</code>，再让 Hexo 部署到 <code>main</code>。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.\blog.cmd build</span><br><span class="line">git push origin source</span><br><span class="line">.\blog.cmd deploy</span><br></pre></td></tr></table></figure>
+
+<p>Git 仍然是整个协作中最重要的安全网。Codex 界面中的撤销能力不能代替提交记录，已经发布的内容也应该通过新的反向提交恢复，而不是直接改写远端历史。</p>
+<p>每一项修改单独提交，还有另一个好处：换到另一台电脑时，只要拉取 <code>source</code> 分支，就能继续维护，不需要依赖当前这段对话或某台电脑上的临时文件。</p>
+<h2 id="我仍然需要做什么"><a href="#我仍然需要做什么" class="headerlink" title="我仍然需要做什么"></a>我仍然需要做什么</h2><p>不用 IDE 之后，我没有退出维护过程，只是把注意力从语法和文件路径转向了判断。</p>
+<p>我仍然需要决定网站要保留什么、哪些信息不愿公开、文章应该使用什么语气，以及一个页面究竟好不好看。Codex 可以提出分类方案，但书是否读过、是否值得推荐，只有我知道。它可以生成图片和布局，但我仍然要指出书被裁掉了、图标不好看，或者某段文字不属于正文。</p>
+<p>我还需要保留几个基本习惯：</p>
+<ul>
+<li>修改前确认 Git 工作区状态；</li>
+<li>发布前查看本地页面；</li>
+<li>不在 <code>main</code> 上直接编辑生成文件；</li>
+<li>换电脑前先推送 <code>source</code>；</li>
+<li>对删除、覆盖和发布保持明确授权；</li>
+<li>不把个人隐私因为“方便”而暴露在网站上。</li>
+</ul>
+<p>Codex 降低了操作门槛，但没有替我承担最终判断。它更像一个能够执行、检查并解释的协作者，而不是自动决定网站方向的人。</p>
+<h2 id="从“我不会改”到“我想这样改”"><a href="#从“我不会改”到“我想这样改”" class="headerlink" title="从“我不会改”到“我想这样改”"></a>从“我不会改”到“我想这样改”</h2><p>以前面对网站问题，我常常先问：“这个文件在哪里？”“这段 CSS 应该怎么写？”现在我更习惯先说：“我希望它看起来怎样？”</p>
+<p>这种变化并没有让技术消失。Hexo、Node.js、Git、Markdown 和 GitHub Pages 仍然在后台工作，只是 Codex 把它们连接成了一个可以用语言驱动的流程。我不需要每天使用 IDE，却仍然拥有源码、构建、测试和版本记录。</p>
+<p>这个博客也因此从一个已经发布但难以继续修改的静态网站，变成了可以持续整理的个人空间。文章、书单、图片、导航和页尾，都是在一次次“先试试看”“这里不太对”“再改一点”的对话中逐渐形成的。</p>
+<p>而你现在读到的这篇文章，也同样是这样完成的：我先提出一个想法，Codex 根据真实的维护记录整理成稿，再由我决定它是否应该出现在网站上。</p>
+
+    
+  </article>
+
+  
+      
+
+  
+  
+  <div class="nexmoe-post-meta nexmoe-rainbow">
+   
+    
+        <a class="nexmoefont icon-tag-fill -none-link" href="/tags/AI-%E5%8D%8F%E4%BD%9C/" rel="tag">AI 协作</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Codex/" rel="tag">Codex</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/GitHub-Pages/" rel="tag">GitHub Pages</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/Hexo/" rel="tag">Hexo</a> <a class="nexmoefont icon-tag-fill -none-link" href="/tags/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4/" rel="tag">博客维护</a>
+    
+</div>
+  
+  
+    <script async src="/js/copy-codeblock.js?v=1785824555394"></script>
+  
+
+  
+      <div class="nexmoe-post-footer">
+          
+      </div>
+  
+</div></div><div class="nexmoe-post-right">    <div class="nexmoe-fixed">
+        <div class="nexmoe-tool">
+
+            
+
+            
+            
+            <button class="mdui-fab catalog" style="overflow:unset;">
+                <i class="nexmoefont icon-i-catalog"></i>
+                <div class="nexmoe-toc">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%B7%E7%82%B9%EF%BC%9A%E4%B8%80%E4%B8%AA%E8%83%BD%E8%AE%BF%E9%97%AE%EF%BC%8C%E5%8D%B4%E6%97%A0%E6%B3%95%E7%BB%A7%E7%BB%AD%E5%86%99%E7%9A%84%E5%8D%9A%E5%AE%A2"><span class="toc-number">1.</span> <span class="toc-text">起点：一个能访问，却无法继续写的博客</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E4%B8%8D%E5%86%8D%E5%AF%BB%E6%89%BE%E6%96%87%E4%BB%B6%EF%BC%8C%E8%80%8C%E6%98%AF%E6%8F%8F%E8%BF%B0%E7%BB%93%E6%9E%9C"><span class="toc-number">2.</span> <span class="toc-text">我不再寻找文件，而是描述结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88%E6%98%AF%E6%88%91%E4%BB%AC%E5%85%B1%E5%90%8C%E7%9A%84%E2%80%9C%E7%94%BB%E5%B8%83%E2%80%9D"><span class="toc-number">3.</span> <span class="toc-text">本地预览是我们共同的“画布”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Codex-%E7%BB%B4%E6%8A%A4%E7%9A%84%E4%B8%8D%E5%8F%AA%E6%98%AF%E4%BB%A3%E7%A0%81"><span class="toc-number">4.</span> <span class="toc-text">Codex 维护的不只是代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%80%9C%E6%8F%90%E4%BA%A4%E5%8F%91%E5%B8%83%E2%80%9D%E4%BB%8D%E7%84%B6%E6%98%AF%E4%B8%80%E6%9D%A1%E6%98%8E%E7%A1%AE%E8%BE%B9%E7%95%8C"><span class="toc-number">5.</span> <span class="toc-text">“提交发布”仍然是一条明确边界</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%88%91%E4%BB%8D%E7%84%B6%E9%9C%80%E8%A6%81%E5%81%9A%E4%BB%80%E4%B9%88"><span class="toc-number">6.</span> <span class="toc-text">我仍然需要做什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E%E2%80%9C%E6%88%91%E4%B8%8D%E4%BC%9A%E6%94%B9%E2%80%9D%E5%88%B0%E2%80%9C%E6%88%91%E6%83%B3%E8%BF%99%E6%A0%B7%E6%94%B9%E2%80%9D"><span class="toc-number">7.</span> <span class="toc-text">从“我不会改”到“我想这样改”</span></a></li></ol>
+                </div>
+            </button>
+            
+
+            
+
+            <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
+        </div>
+    </div>
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="搜索" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><template id="site-footer-template">
+  <footer class="site-footer" aria-label="网站页尾">
+    <p class="site-footer__motto">写下尚未完成的思考</p>
+    <nav class="site-footer__nav" aria-label="页尾导航">
+      <a href="/archives.html">文章归档</a>
+      <span aria-hidden="true">·</span>
+      <a href="/books-and-mountains.html">书与山</a>
+      <span aria-hidden="true">·</span>
+      <a href="/about.html">关于这里</a>
+    </nav>
+    <p class="site-footer__copyright">© 2024–<span class="site-footer__year">2026</span> 未完集</p>
+  </footer>
+</template>
+<script>
+  (() => {
+    const primary = document.querySelector('.nexmoe-primary');
+    const template = document.querySelector('#site-footer-template');
+    if (!primary || !template) return;
+    template.content.querySelector('.site-footer__year').textContent = new Date().getFullYear();
+    primary.appendChild(template.content.cloneNode(true));
+    template.remove();
+  })();
+</script>
+</div></body></html>
