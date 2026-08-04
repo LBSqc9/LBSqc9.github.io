@@ -14,7 +14,7 @@
 <meta property="og:description" content=".nexmoe-post-cover img[src$&#x3D;&quot;&#x2F;images&#x2F;page&#x2F;books-and-mountains-cover.webp&quot;] {   object-position: center 35%; } .books-and-mountains {   --collection-blue: #667ebd;   --collection-gold: #d39a45; } .boo">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-29T17:10:00.000Z">
-<meta property="article:modified_time" content="2026-07-29T17:10:00.000Z">
+<meta property="article:modified_time" content="2026-08-04T05:30:18.000Z">
 <meta property="article:author" content="LBSqc9">
 <meta property="article:tag" content="技术">
 <meta property="article:tag" content="阅读">
@@ -26,17 +26,17 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1785818268618">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1785821608635">
 
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
 
-<link rel="stylesheet" href="/css/style.css?v=1785818268618">
+<link rel="stylesheet" href="/css/style.css?v=1785821608635">
 
 
 
 
     
-        <link rel="stylesheet" href="/custom.css?v=1785818268618">
+        <link rel="stylesheet" href="/custom.css?v=1785821608635">
     
 
 
@@ -46,7 +46,7 @@
 <script src="/lib/lax.min.js" async></script>
 
 
-<script async src="/js/app.js?v=1785818268618"></script>
+<script async src="/js/app.js?v=1785821608636"></script>
 
  
 
@@ -114,7 +114,7 @@
 </div>
 
 
-	<script async src="/js/search.js?v=1785818268619"></script>
+	<script async src="/js/search.js?v=1785821608638"></script>
 
 
 
@@ -256,8 +256,8 @@
         <a class="nexmoefont icon-calendar-fill">2026年07月30日</a>
         
         
-    <a><i class="nexmoefont icon-areachart"></i>约690字</a>
-    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要3分钟</a>
+    <a><i class="nexmoefont icon-areachart"></i>约1.3k字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要6分钟</a>
 
     </div>
     
@@ -323,6 +323,10 @@
   background: var(--collection-gold);
 }
 .books-and-mountains .collection-card h3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55em;
   margin: 0 0 0.35em;
   font-size: 1.15em;
 }
@@ -348,16 +352,129 @@
   background: rgba(211, 154, 69, 0.11);
   color: var(--collection-gold);
 }
+.books-and-mountains .reading-overview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65em;
+  margin-bottom: 1.2em;
+}
+.books-and-mountains .reading-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.35em 0.75em;
+  border-radius: 999px;
+  background: rgba(128, 128, 128, 0.08);
+  color: #858585;
+  font-size: 0.84em;
+}
+.books-and-mountains .reading-stat strong {
+  color: var(--color-text-1);
+  font-weight: 600;
+}
+.books-and-mountains .reading-categories {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1em;
+}
+.books-and-mountains .reading-category {
+  padding: 1.2em 1.3em;
+  border: 1px solid rgba(128, 128, 128, 0.14);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.3);
+}
+.books-and-mountains .reading-category:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+.books-and-mountains .reading-category h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+  margin: 0 0 0.75em;
+  color: var(--collection-blue);
+  font-size: 1.02em;
+}
+.books-and-mountains .reading-category ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.books-and-mountains .reading-category li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8em;
+  padding: 0.55em 0;
+  border-bottom: 1px dashed rgba(128, 128, 128, 0.14);
+  line-height: 1.55;
+}
+.books-and-mountains .reading-category li:last-child {
+  border-bottom: 0;
+}
+.books-and-mountains .reading-category li::before,
+.books-and-mountains .reading-category li::after {
+  display: none;
+}
+.books-and-mountains .reading-book {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.books-and-mountains .reading-book small {
+  margin-top: 0.08em;
+  color: #999;
+  font-size: 0.78em;
+}
+.books-and-mountains .reading-status {
+  flex: 0 0 auto;
+  padding: 0.16em 0.58em;
+  border-radius: 999px;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.books-and-mountains .reading-title-with-marker {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 0;
+  align-items: center;
+  gap: 0.35em;
+}
+.books-and-mountains .reading-recommendation {
+  padding: 0.16em 0.58em;
+  border-radius: 999px;
+  background: rgba(102, 126, 189, 0.13);
+  color: var(--collection-blue);
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.books-and-mountains .status-read {
+  background: rgba(82, 151, 111, 0.13);
+  color: #52976f;
+}
+.books-and-mountains .status-reading {
+  background: rgba(211, 154, 69, 0.14);
+  color: #b97f2e;
+}
+.books-and-mountains .status-unread {
+  background: rgba(128, 128, 128, 0.11);
+  color: #878d98;
+}
 @media (max-width: 600px) {
-  .books-and-mountains .collection-grid {
+  .books-and-mountains .collection-grid,
+  .books-and-mountains .reading-categories {
     grid-template-columns: 1fr;
+  }
+  .books-and-mountains .reading-category:last-child:nth-child(odd) {
+    grid-column: auto;
   }
   .books-and-mountains .collection-heading {
     display: block;
   }
   .books-and-mountains .collection-heading span {
     display: block;
-    margin: -0.35em 0 0.7em;
+    margin: 0.15em 0 0.7em;
   }
 }
 </style>
@@ -365,24 +482,76 @@
 <div class="books-and-mountains">
   <p class="collection-intro">有些路从书页开始，有些故事写在山路上。这里没有完整的书评，也不是详细的登山攻略，只记录阅读后的感受，以及走过一座山后留下的印象。</p>
 
-  <section class="collection-section books">
+  <section class="collection-section reading-list">
     <div class="collection-heading">
-      <h2>推荐书目</h2>
-      <span>读过，并且愿意分享给别人</span>
+      <h2>阅读书单</h2>
+      <span>状态会随阅读进度更新</span>
     </div>
-    <div class="collection-grid">
-      <article class="collection-card book-card">
-        <h3>《杀死一只知更鸟》</h3>
-        <div class="collection-meta">哈珀·李</div>
-        <p>小时候读《巴黎圣母院》时，我还不能理解其中的深意，所谓读后感也不过是人云亦云。读过这本书后，我才真正感受到：人的外表不能代表内心的善恶，我们不应以貌取人，也不该让偏见先于了解。</p>
-        <span class="collection-note">偏见与善恶</span>
-      </article>
-      <article class="collection-card book-card">
-        <h3>《悉达多》</h3>
-        <div class="collection-meta">赫尔曼·黑塞</div>
-        <p>最初读这本书，不过是出于从众心理——刷到很多人推荐，便也想读一读。读完后觉得很喜欢，却很难说出明确的推荐理由；只是被悉达多寻求真理、探索自我的勇气，以及他一路经历的选择与变化所吸引。</p>
-        <span class="collection-note">真理与自我</span>
-      </article>
+    <div class="reading-overview" aria-label="阅读状态统计">
+      <span class="reading-stat">书单 <strong>33</strong> 本</span>
+      <span class="reading-stat">已读 <strong>15</strong> 本</span>
+      <span class="reading-stat">在读 <strong>2</strong> 本</span>
+      <span class="reading-stat">未读 <strong>16</strong> 本</span>
+    </div>
+    <div class="reading-categories">
+      <section class="reading-category">
+        <h3>文学与小说</h3>
+        <ul>
+          <li><span>《教父》</span><span class="reading-status status-reading">在读</span></li>
+          <li><span class="reading-title-with-marker"><span>《杀死一只知更鸟》</span><span class="reading-recommendation">推荐</span></span><span class="reading-status status-read">已读</span></li>
+          <li><span class="reading-title-with-marker"><span>《悉达多》</span><span class="reading-recommendation">推荐</span></span><span class="reading-status status-read">已读</span></li>
+          <li><span>《霍乱时期的爱情》</span><span class="reading-status status-read">已读</span></li>
+          <li><span>《雪国》</span><span class="reading-status status-read">已读</span></li>
+          <li><span>《额尔古纳河右岸》</span><span class="reading-status status-read">已读</span></li>
+          <li><span>《竹林中》</span><span class="reading-status status-read">已读</span></li>
+          <li><span>《银河系漫游指南》</span><span class="reading-status status-unread">未读</span></li>
+          <li><span>《遥远的救世主》</span><span class="reading-status status-unread">未读</span></li>
+          <li><span class="reading-book"><span>《鲁迅全集》</span><small>05 版 · 人民文学出版社</small></span><span class="reading-status status-unread">未读</span></li>
+        </ul>
+      </section>
+      <section class="reading-category">
+        <h3>历史、人物与文化</h3>
+        <ul>
+          <li><span class="reading-book"><span>《中国古代文化常识》</span><small>王力</small></span><span class="reading-status status-reading">在读</span></li>
+          <li><span>《明朝那些事儿》</span><span class="reading-status status-read">已读</span></li>
+          <li><span>《蛤蟆的油》</span><span class="reading-status status-read">已读</span></li>
+          <li><span class="reading-book"><span>《龙与少年游》</span><small>江南</small></span><span class="reading-status status-read">已读</span></li>
+          <li><span>《梁永安：阅读、游历和爱情》</span><span class="reading-status status-read">已读</span></li>
+          <li><span class="reading-book"><span>《人类群星闪耀时》</span><small>茨威格</small></span><span class="reading-status status-unread">未读</span></li>
+          <li><span>《本杰明-富兰克林传》</span><span class="reading-status status-unread">未读</span></li>
+          <li><span class="reading-book"><span>《中国通史》</span><small>傅乐成 / 叶龙整理</small></span><span class="reading-status status-unread">未读</span></li>
+          <li><span>《中国历史政治得失》</span><span class="reading-status status-unread">未读</span></li>
+        </ul>
+      </section>
+      <section class="reading-category">
+        <h3>社会与思想</h3>
+        <ul>
+          <li><span>《乡土中国》</span><span class="reading-status status-read">已读</span></li>
+          <li><span class="reading-title-with-marker"><span>《当下的力量》</span><span class="reading-recommendation">推荐</span></span><span class="reading-status status-read">已读</span></li>
+          <li><span>《非暴力沟通》</span><span class="reading-status status-unread">未读</span></li>
+          <li><span>《贩卖怀疑的商人》</span><span class="reading-status status-unread">未读</span></li>
+          <li><span>《毛泽东选集》</span><span class="reading-status status-unread">未读</span></li>
+        </ul>
+      </section>
+      <section class="reading-category">
+        <h3>知识与成长</h3>
+        <ul>
+          <li><span>《认知觉醒：开启自我改变的原动力》</span><span class="reading-status status-read">已读</span></li>
+          <li><span>《如何找到想做的事》</span><span class="reading-status status-read">已读</span></li>
+          <li><span>《深度工作：如何有效使用每一点脑力》</span><span class="reading-status status-read">已读</span></li>
+          <li><span>《如何阅读一本书》</span><span class="reading-status status-unread">未读</span></li>
+          <li><span>《从一到无穷大》</span><span class="reading-status status-unread">未读</span></li>
+        </ul>
+      </section>
+      <section class="reading-category">
+        <h3>商业与经济</h3>
+        <ul>
+          <li><span>《穷爸爸富爸爸》</span><span class="reading-status status-unread">未读</span></li>
+          <li><span class="reading-book"><span>《从0到1》</span><small>彼得·蒂尔</small></span><span class="reading-status status-unread">未读</span></li>
+          <li><span>《经济学的思维方式》</span><span class="reading-status status-unread">未读</span></li>
+          <li><span>《国富论》</span><span class="reading-status status-unread">未读</span></li>
+        </ul>
+      </section>
     </div>
   </section>
 
@@ -422,7 +591,7 @@
 </div>
   
   
-    <script async src="/js/copy-codeblock.js?v=1785818268589"></script>
+    <script async src="/js/copy-codeblock.js?v=1785821608616"></script>
   
 
   
@@ -436,7 +605,7 @@
             <button class="mdui-fab catalog" style="overflow:unset;">
                 <i class="nexmoefont icon-i-catalog"></i>
                 <div class="nexmoe-toc">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">推荐书目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.1.</span> <span class="toc-text">《杀死一只知更鸟》</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.2.</span> <span class="toc-text">《悉达多》</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">登山足迹</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.1.</span> <span class="toc-text">泰山</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.2.</span> <span class="toc-text">嵩山</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">阅读书单</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.1.</span> <span class="toc-text">文学与小说</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.2.</span> <span class="toc-text">历史、人物与文化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.3.</span> <span class="toc-text">社会与思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.4.</span> <span class="toc-text">知识与成长</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.5.</span> <span class="toc-text">商业与经济</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">登山足迹</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.1.</span> <span class="toc-text">泰山</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.2.</span> <span class="toc-text">嵩山</span></a></li></ol></li></ol>
                 </div>
             </button>
             
