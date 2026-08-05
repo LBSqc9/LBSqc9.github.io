@@ -48,3 +48,11 @@
 .site-footer__copyright {
   opacity: 0.78;
 }
+
+/* Keep homepage covers consistent while giving phones a taller visual area. */
+@media (max-width: 1024px) {
+  section.nexmoe-posts .nexmoe-post-cover {
+    min-height: 120px;
+    padding-top: clamp(120px, 30%, 200px) !important;
+  }
+}
