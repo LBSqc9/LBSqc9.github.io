@@ -24,17 +24,17 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1785824555447">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1785905061438">
 
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
 
-<link rel="stylesheet" href="/css/style.css?v=1785824555448">
+<link rel="stylesheet" href="/css/style.css?v=1785905061438">
 
 
 
 
     
-        <link rel="stylesheet" href="/custom.css?v=1785824555448">
+        <link rel="stylesheet" href="/custom.css?v=1785905061438">
     
 
 
@@ -44,7 +44,7 @@
 <script src="/lib/lax.min.js" async></script>
 
 
-<script async src="/js/app.js?v=1785824555448"></script>
+<script async src="/js/app.js?v=1785905061438"></script>
 
  
 
@@ -112,7 +112,7 @@
 </div>
 
 
-	<script async src="/js/search.js?v=1785824555448"></script>
+	<script async src="/js/search.js?v=1785905061439"></script>
 
 
 
@@ -269,7 +269,7 @@
             <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
         
         
-    <a><i class="nexmoefont icon-areachart"></i>约2.3k字</a>
+    <a><i class="nexmoefont icon-areachart"></i>约2.4k字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>预计需要8分钟</a>
 
     </div>
@@ -303,14 +303,21 @@ article blockquote.codex-note p {
   margin: 0;
   text-indent: 0;
 }
+div.nexmoe-post article > .nexmoe-post-cover {
+  min-height: 150px;
+  padding-top: clamp(150px, 20%, 210px) !important;
+}
+div.nexmoe-post article > .nexmoe-post-cover h1 {
+  padding: clamp(14px, 2vw, 24px);
+  font-size: clamp(1.65rem, 4.2vw, 2.5rem);
+  line-height: 1.18;
+}
 @media (max-width: 600px) {
-  section.nexmoe-post article > .nexmoe-post-cover,
-  div.nexmoe-post article > .nexmoe-post-cover {
+  section.nexmoe-post article > .nexmoe-post-cover {
     min-height: 148px;
     padding-top: 38% !important;
   }
-  section.nexmoe-post article > .nexmoe-post-cover h1,
-  div.nexmoe-post article > .nexmoe-post-cover h1 {
+  section.nexmoe-post article > .nexmoe-post-cover h1 {
     padding: 14px 18px;
     font-size: 1.7rem;
     line-height: 1.2;
