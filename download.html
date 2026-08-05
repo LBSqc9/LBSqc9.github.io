@@ -26,17 +26,17 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1785910731013">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1785912626590">
 
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
 
-<link rel="stylesheet" href="/css/style.css?v=1785910731014">
+<link rel="stylesheet" href="/css/style.css?v=1785912626590">
 
 
 
 
     
-        <link rel="stylesheet" href="/custom.css?v=1785910731014">
+        <link rel="stylesheet" href="/custom.css?v=1785912626590">
     
 
 
@@ -46,7 +46,7 @@
 <script src="/lib/lax.min.js" async></script>
 
 
-<script async src="/js/app.js?v=1785910731014"></script>
+<script async src="/js/app.js?v=1785912626590"></script>
 
  
 
@@ -114,7 +114,7 @@
 </div>
 
 
-	<script async src="/js/search.js?v=1785910731014"></script>
+	<script async src="/js/search.js?v=1785912626590"></script>
 
 
 
@@ -294,7 +294,7 @@
 </div>
   
   
-    <script async src="/js/copy-codeblock.js?v=1785910730971"></script>
+    <script async src="/js/copy-codeblock.js?v=1785912626551"></script>
   
 
   
@@ -347,8 +347,11 @@
   (() => {
     const content = document.querySelector('#nexmoe-content');
     const primary = document.querySelector('.nexmoe-primary');
+    const isPostPage = /^\/\d{4}\/\d{2}\/\d{2}\//.test(location.pathname);
+    const is404Page = location.pathname === '/404.html';
     const headerTemplate = document.querySelector('#unfinished-header-template');
     const template = document.querySelector('#site-footer-template');
+    document.body.classList.toggle('is-404-page', is404Page);
     if (content && headerTemplate) {
       document.body.insertBefore(headerTemplate.content.cloneNode(true), content);
       headerTemplate.remove();
@@ -391,6 +394,96 @@
       articleHeader.appendChild(articleTitle);
       if (articleMeta) articleHeader.appendChild(articleMeta);
       article.insertBefore(articleHeader, articleCover);
+    }
+
+    if (article && isPostPage) {
+      const progress = document.createElement('div');
+      progress.className = 'unfinished-reading-progress';
+      progress.setAttribute('aria-hidden', 'true');
+      progress.innerHTML = '<span></span>';
+      document.body.appendChild(progress);
+
+      const progressBar = progress.firstElementChild;
+      let progressTicking = false;
+      const updateProgress = () => {
+        const articleTop = article.getBoundingClientRect().top + window.scrollY;
+        const articleEnd = articleTop + article.offsetHeight - window.innerHeight;
+        const distance = Math.max(articleEnd - articleTop, 1);
+        const value = Math.min(Math.max((window.scrollY - articleTop) / distance, 0), 1);
+        progressBar.style.transform = `scaleX(${value})`;
+        progressTicking = false;
+      };
+      const requestProgressUpdate = () => {
+        if (progressTicking) return;
+        progressTicking = true;
+        window.requestAnimationFrame(updateProgress);
+      };
+      updateProgress();
+      window.addEventListener('scroll', requestProgressUpdate, { passive: true });
+      window.addEventListener('resize', requestProgressUpdate);
+
+      const toc = document.querySelector('.nexmoe-post-right .nexmoe-toc > .toc');
+      if (toc?.querySelector('.toc-link')) {
+        const outline = document.createElement('aside');
+        outline.className = 'unfinished-outline';
+        outline.setAttribute('aria-label', '文章大纲');
+        const outlineTitle = document.createElement('p');
+        outlineTitle.className = 'unfinished-outline__title';
+        outlineTitle.textContent = '文章大纲';
+        const outlineList = toc.cloneNode(true);
+        outlineList.classList.add('unfinished-outline__list');
+        outline.append(outlineTitle, outlineList);
+        document.body.appendChild(outline);
+        document.body.classList.add('has-article-outline');
+
+        const mobileOutline = document.createElement('details');
+        mobileOutline.className = 'unfinished-mobile-outline';
+        const mobileSummary = document.createElement('summary');
+        const sectionCount = toc.querySelectorAll('.toc-link').length;
+        mobileSummary.innerHTML = `<span>本文目录</span><small>${sectionCount} 节</small>`;
+        const mobileList = toc.cloneNode(true);
+        mobileList.classList.add('unfinished-mobile-outline__list');
+        mobileOutline.append(mobileSummary, mobileList);
+        const renderedArticleHeader = article.querySelector(':scope > .unfinished-article-header');
+        if (renderedArticleHeader) renderedArticleHeader.after(mobileOutline);
+        else article.prepend(mobileOutline);
+        mobileOutline.querySelectorAll('.toc-link').forEach((link) => {
+          link.addEventListener('click', () => {
+            mobileOutline.open = false;
+          });
+        });
+
+        const outlineLinks = [...outline.querySelectorAll('.toc-link')];
+        const sections = outlineLinks.map((link) => {
+          const id = decodeURIComponent(new URL(link.href, location.href).hash.slice(1));
+          return { link, heading: document.getElementById(id) };
+        }).filter((item) => item.heading);
+
+        let outlineTicking = false;
+        const updateOutline = () => {
+          const threshold = window.scrollY + 150;
+          let current = sections[0];
+          sections.forEach((item) => {
+            const headingTop = item.heading.getBoundingClientRect().top + window.scrollY;
+            if (headingTop <= threshold) current = item;
+          });
+          outlineLinks.forEach((link) => {
+            const active = current?.link === link;
+            link.classList.toggle('is-active', active);
+            if (active) link.setAttribute('aria-current', 'location');
+            else link.removeAttribute('aria-current');
+          });
+          outlineTicking = false;
+        };
+        const requestOutlineUpdate = () => {
+          if (outlineTicking) return;
+          outlineTicking = true;
+          window.requestAnimationFrame(updateOutline);
+        };
+        updateOutline();
+        window.addEventListener('scroll', requestOutlineUpdate, { passive: true });
+        window.addEventListener('resize', requestOutlineUpdate);
+      }
     }
 
     if (primary && template) {
