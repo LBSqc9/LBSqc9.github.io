@@ -24,17 +24,17 @@
 <link rel="stylesheet" href="/lib/mdui_043tiny/mdui.css">
 
 
-<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1785906416206">
+<link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1785909285981">
 
     <link rel="stylesheet" href="//at.alicdn.com/t/font_2421060_8z08qcz5sq3.css">
 
-<link rel="stylesheet" href="/css/style.css?v=1785906416206">
+<link rel="stylesheet" href="/css/style.css?v=1785909285981">
 
 
 
 
     
-        <link rel="stylesheet" href="/custom.css?v=1785906416206">
+        <link rel="stylesheet" href="/custom.css?v=1785909285981">
     
 
 
@@ -44,7 +44,7 @@
 <script src="/lib/lax.min.js" async></script>
 
 
-<script async src="/js/app.js?v=1785906416206"></script>
+<script async src="/js/app.js?v=1785909285981"></script>
 
  
 
@@ -112,7 +112,7 @@
 </div>
 
 
-	<script async src="/js/search.js?v=1785906416207"></script>
+	<script async src="/js/search.js?v=1785909285981"></script>
 
 
 
@@ -334,7 +334,24 @@ article blockquote.literary-quote p {
             <a href="#nexmoe-content" class="backtop toc-link" aria-label="Back To Top" title="top"><button class="mdui-fab mdui-ripple"><i class="nexmoefont icon-caret-top"></i></button></a>
         </div>
     </div>
-</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="搜索" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><template id="site-footer-template">
+</div></div><div id="nexmoe-footer"><!--!--></div><div id="nexmoe-search-space"><div class="search-container"><div class="search-header"><div class="search-input-container"><input class="search-input" type="text" placeholder="搜索" onInput="sinput();"></div><a class="search-close" onclick="sclose();">×</a></div><div class="search-body"></div></div></div><div><template id="unfinished-header-template">
+  <header class="unfinished-header">
+    <div class="unfinished-header__inner">
+      <a class="unfinished-brand" href="/" aria-label="未完集首页">
+        <span>未完集</span>
+        <small>UNFINISHED NOTES</small>
+      </a>
+      <nav class="unfinished-nav" aria-label="主导航">
+        <a href="/">首页</a>
+        <a href="/archives.html">文章</a>
+        <a href="/books-and-mountains.html">书与山</a>
+        <a href="/about.html">关于</a>
+        <button type="button" class="unfinished-search" aria-label="搜索文章">搜索</button>
+      </nav>
+    </div>
+  </header>
+</template>
+<template id="site-footer-template">
   <footer class="site-footer" aria-label="网站页尾">
     <p class="site-footer__motto">写下尚未完成的思考</p>
     <nav class="site-footer__nav" aria-label="页尾导航">
@@ -349,12 +366,59 @@ article blockquote.literary-quote p {
 </template>
 <script>
   (() => {
+    const content = document.querySelector('#nexmoe-content');
     const primary = document.querySelector('.nexmoe-primary');
+    const headerTemplate = document.querySelector('#unfinished-header-template');
     const template = document.querySelector('#site-footer-template');
-    if (!primary || !template) return;
-    template.content.querySelector('.site-footer__year').textContent = new Date().getFullYear();
-    primary.appendChild(template.content.cloneNode(true));
-    template.remove();
+    if (content && headerTemplate) {
+      document.body.insertBefore(headerTemplate.content.cloneNode(true), content);
+      headerTemplate.remove();
+
+      const currentPath = location.pathname.replace(/index\.html$/, '');
+      document.querySelectorAll('.unfinished-nav a').forEach((link) => {
+        const linkPath = new URL(link.href, location.origin).pathname.replace(/index\.html$/, '');
+        if (linkPath === currentPath) link.setAttribute('aria-current', 'page');
+      });
+
+      const searchButton = document.querySelector('.unfinished-search');
+      searchButton?.addEventListener('click', () => {
+        const searchInput = document.querySelector('.search-input');
+        const searchBox = document.querySelector('#nexmoe-search-space');
+        if (searchBox) searchBox.style.display = 'flex';
+        window.setTimeout(() => searchInput?.focus(), 80);
+      });
+    }
+
+    document.querySelectorAll('section.nexmoe-posts > .nexmoe-post').forEach((post) => {
+      const coverLink = post.querySelector(':scope > a');
+      const title = coverLink?.querySelector('.nexmoe-post-cover h1');
+      if (!coverLink || !title) return;
+      const headingLink = document.createElement('a');
+      headingLink.className = 'unfinished-post-heading';
+      headingLink.href = coverLink.href;
+      headingLink.appendChild(title);
+      coverLink.classList.add('unfinished-cover-link');
+      post.insertBefore(headingLink, coverLink);
+      post.classList.add('unfinished-editorial-post');
+    });
+
+    const article = document.querySelector('#nexmoe-content .nexmoe-primary > .nexmoe-post > article');
+    const articleCover = article?.querySelector(':scope > .nexmoe-post-cover');
+    const articleTitle = articleCover?.querySelector('h1');
+    const articleMeta = article?.querySelector(':scope > .nexmoe-post-meta');
+    if (article && articleCover && articleTitle) {
+      const articleHeader = document.createElement('header');
+      articleHeader.className = 'unfinished-article-header';
+      articleHeader.appendChild(articleTitle);
+      if (articleMeta) articleHeader.appendChild(articleMeta);
+      article.insertBefore(articleHeader, articleCover);
+    }
+
+    if (primary && template) {
+      template.content.querySelector('.site-footer__year').textContent = new Date().getFullYear();
+      primary.appendChild(template.content.cloneNode(true));
+      template.remove();
+    }
   })();
 </script>
 </div></body></html>
